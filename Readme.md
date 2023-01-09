@@ -4,6 +4,6 @@
     <ul>
         <li>Header</li>
         <li>Body</li>
-        <li>Content</li>
+        <li>Footer</li>
     </ul>
 </ul>
