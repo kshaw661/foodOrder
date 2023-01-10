@@ -4,7 +4,7 @@
   "description": "We are creating something exciting",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html",
+    "start": "parcel index.html --port 9874",
     "buil": "parcel build index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
