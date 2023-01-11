@@ -30,3 +30,4 @@
   }
   .noHover>li>a{ text-decoration: none;}
   .noHover>li>a:hover{ text-decoration: underline;}
+  .card>img{width:100%}

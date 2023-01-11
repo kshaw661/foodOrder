@@ -1,11 +1,13 @@
-const Cards = () => {
+const Cards = (props) => {
+    // Destructuring the props
+    const {name,address,cloudinaryImageId} = props;
     return (
         <div className="col-4">
             <div className="card" >
-                <img src="..." className="card-img-top" alt="..." />
+                <img src={"https://res.cloudinary.com/swiggy/image/upload/"+cloudinaryImageId} className="card-img-top" />
                     <div className="card-body">
-                        <h5 className="card-title">Resturent Name</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 className="card-title">{name}</h5>
+                        <p className="card-text">{address}</p>
                         <a href="#" className="btn btn-primary">Go AT Aahar</a>
                     </div>
             </div>
