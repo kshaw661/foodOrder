@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import Cards from './Cards';
+import { useState } from 'react';
 
 const restuarantData = [
     {
@@ -763,14 +765,53 @@ const restuarantData = [
         "subtype": "basic"
     }
 ]
+/**
+ * Import of State and Hook
+ * What is hooks - Hooks are nothing but simple javascript functions which is developed by Facebook Developer. There are n-number of hooks in React. "useState" is very important from them. This useState hook is used to create a local state variable. 
+ * But in react we create local variable like.
+ * const [searchInput] = useState()
+ *  IF we want to pass the default variable the need to pass
+ * const [searchInput] = useState('Default variable')
+ * Why do we need this state variable - Whenenver a variable changes or somebody updated that const, UI wont understand and cann't be in sync with the const. So, facebook developer ease our work and give this feature with name of state. React has one way binding.  React is watiching this state varible and whenevr any update in state variable then automatically state component 
+ *  
+ */
+filterData = (searchText,restaurant) =>{
+   const filterData = restaurant.filter((restaurant)=>restaurant.data.name.includes(searchText));
+   return filterData;
+}
 const Body = () => {
+    //const searchInput = 'Lets Search';
+    const [searchInput, setSearchInput] = useState("Search restuarant "); // return = {variable name, function to update the variable}
+    const [restuarant, setRestuarant] = useState(restuarantData);
     return (
         <div className="container">
             <div className="row mt-2">
+                <div className="col-md-9">
+
+                    <input type="text"
+                        className="form-control"
+                        placeholder='Search'
+                        value={searchInput}
+                        onChange={(e) => {
+                            setSearchInput(e.target.value);
+                        }}
+                    />
+
+
+                </div>
+                <div className='col-md-3'>
+                    <button type="button" className="btn btn-primary" onClick={()=>{
+                        const data = filterData(searchInput,restuarant);
+                        setRestuarant(data);
+                    }}>Search</button>
+                </div>
+            </div>
+            <div className="row mt-2">
+
                 {
-                    restuarantData.map(
-                        (resturnet)=>{
-                            return <Cards {...resturnet.data} />;
+                    restuarant.map(
+                        (resturnet) => {
+                            return <Cards {...resturnet.data} key={resturnet.data.id}/>;
                         }
                     )
                 }
